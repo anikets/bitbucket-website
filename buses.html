@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<head>
+   <title>City Commute | Pune</title>
+
+   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+   <!-- <link rel='stylesheet' type='text/css' href='js/jquery-ui.css' /> -->
+   <link rel='stylesheet' type='text/css' href='css/jquery.mobile-1.2.0.min.css' />
+   <!-- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" /> -->
+   <link rel='stylesheet' type='text/css' href='css/styles.css' />
+</head>
+
+<body>
+<!-- Start of page: buses -->
+<div data-role="page" id="pg-bus">
+
+   <div data-role="header">
+      <a href='index.html' data-ajax='false'>Home</a>
+      <h1>City Commute | Pune</h1>
+      <a href='#' data-rel="back">Back</a>
+   </div><!-- /header -->
+
+   <div data-role="content" data-theme="d" class='cont'>
+      <ul data-role="listview" data-inset="true" data-filter="true" class='bus-list'>
+      </ul>
+   </div><!-- /content -->
+   
+   <div data-role="footer">
+      <h4>Travel in green. Travel in groups.</h4>
+   </div><!-- /footer -->
+</div><!-- /page buses -->
+
+
+<!-- Start of page: bus details -->
+<div data-role="page" id="pg-bus-det">
+
+   <div data-role="header">
+      <a href='index.html' data-ajax='false'>Home</a>
+      <h1>City Commute | Pune</h1>
+      <a href='#' data-rel="back">Back</a>
+   </div><!-- /header -->
+
+   <div data-role="content" data-theme="d" class='cont'>
+      <h2></h2>
+
+      <h3>Waypoints</h3>
+      <ul data-role="listview" data-inset="true" data-filter="true" class='waypoints'></ul>
+
+      <h3>Departure times</h3>
+      <ul data-role="listview" data-inset="true" data-filter="true" class='dep-times'></ul>
+   </div><!-- /content -->
+   
+   <div data-role="footer">
+      <h4>Travel in green. Travel in groups.</h4>
+   </div><!-- /footer -->
+</div><!-- /page bus details -->
+
+
+   <script src="js/jquery-1.8.3.js"></script>
+   <script>
+      $(document).ready(function() {
+         var buses = {"buses": [{
+                  "id" : "123A",
+                  "orig": "Pune Railway Station",
+                  "short_orig" : "Pune Stn",
+                  "dest": "Wagholi",
+                  "short_dest" : "Wagholi",
+                  "waypoints": ["Wadia College", "Bund Garden", "Yerawada", "Inorbit Mall", "Wagholi"],
+                  "timings": ['6 AM', '12 PM', '5PM'],
+                  "durn" : '60 min'
+               },
+               {
+                  "id" : "56B",
+                  "orig": "Pune Municipal Corporation",
+                  "short_orig" : "PMC",
+                  "dest": "Balewadi",
+                  "short_dest" : "Balewadi",
+                  "waypoints": ["E-Square", "Symantec", "Balewadi"],
+                  "timings": ['6 AM', '12 PM', '5 PM'],
+                  "durn" : '50 min'
+               }]
+            };
+
+         var htmlFrag = "";
+         buses.buses.forEach(function(value,v) {
+            htmlFrag += "<li><a href='#pg-bus-det' data-transition='slide' data-busid=" + value.id + ">" + value.short_orig + " - " + value.short_dest + "</a></li>\n"
+            // console.log(htmlFrag);
+         });
+         $('ul.bus-list').append(htmlFrag);
+
+
+
+         // Handle clicks on bus names list.
+         $('ul.bus-list li a').click(function() {
+            var busID = $(this).attr('data-busid');
+            console.log(busID);
+
+            // Isolate required bus details
+            var requiredBus;
+            var waypointsHTML = "";
+            buses.buses.forEach(function(v, i) {
+               if (v.id == busID) {
+                  requiredBus = v;
+               }
+            });
+            requiredBus.waypoints.forEach(function(value, index) {
+               waypointsHTML += "<li>" + value + "</li>"
+            });
+            // console.log(waypointsHTML);
+            $('ul.waypoints').html(waypointsHTML);
+            $('ul.waypoints').listview('refresh');
+         });
+      });
+   </script>
+   <!-- <script src="js/jquery-ui.js"></script> -->
+   <script src="js/jquery.mobile-1.2.0.min.js"></script>
+   <!-- <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script> -->
+   <!-- <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script> -->
+   <!-- <script src="js/scripts.js"></script> -->
+   
+
+</body>
+</html>
