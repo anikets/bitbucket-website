@@ -9,18 +9,7 @@
    <link rel="stylesheet" href="css/jquery.mobile-1.2.0.min.css" />
    <link rel='stylesheet' type='text/css' href='css/styles.css' />
    <style type="text/css"></style>
-<script type="text/javascript">
-// Google Analytics
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-37444267-1']);
-  _gaq.push(['_trackPageview']);
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
 </head>
 
 <body>
@@ -34,10 +23,10 @@
       <p>Welcome to City Commute! This app is made to supercharge your public transport usage and experience.</p>
       <p>We believe the world is soon going to run short of space for driving cars and bikes. We also believe it driving requires attention and gets tiring after a certain point. So, we resort to public transport.</p>
 
-      <a href="map.html" data-role="button" data-icon="star" data-theme="b" data-ajax='false' data-transition="flip">See map</a>
+      <a href="map.html" data-role="button" data-icon="star" data-theme="b" data-ajax='false' data-transition="flip"onclick="_gaq.push(['_trackEvent', 'map link', 'clicked'])">See map</a>
 
       <ul data-role="listview" data-inset="true">
-         <li><a href="buses.html" data-ajax="false" data-transition="flip">Buses</a></li>
+         <li><a href="buses.html" data-transition="flip">Buses</a></li>
          <li><a href="#six-s" data-transition="turn">6 Seaters</a></li>
          <li><a href="#route-c" data-transition="flow">Route calculator</a></li>
          <li><a href="#pois" data-transition="slidefade">POIs</a></li>
@@ -129,7 +118,7 @@
    <script src="js/jquery.mobile-1.2.0.min.js"></script>
    <!-- <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script> -->
    <!-- <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script> -->
-   <!-- <script src="js/scripts.js"></script> -->
+   <script src="js/scripts.js"></script>
    
 
 </body>

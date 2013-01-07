@@ -45,17 +45,24 @@
          var buses = {"buses": [{
                   "orig": "Pune Railway Station",
                   "dest": "Wagholi",
-                  "waypoints": ["Wadia College", "Bund Garden", "Yerawada", "Inorbit Mall", "Wagholi"]
+                  "waypoints": [{"n": "Wadia College", "t": "10min"},
+                     {"n": "Bund Garden", "t": "10min"},
+                     {"n": "Yerawada", "t": "10min"},
+                     {"n": "Inorbit Mall", "t": "10min"},
+                     {"n": "Wagholi", "t": "10min"}],
+                  "route": null // Co-ordinates from route.
                },
                {
                   "orig": "Pune Municipal Corporation",
                   "dest": "Balewadi",
-                  "waypoints": ["E-Square", "Symantec", "Balewadi"]
+                  "waypoints": ["E-Square", "Symantec", "Balewadi"],
+                  "route": null // Co-ordinates from route.
                }]
             };
 
          var mapOptions = {
-            center: new google.maps.LatLng(-34.397, 150.644),
+            center: new google.maps.LatLng(18.5, 74.5),
+            // center: new google.maps.LatLng(-34.397, 150.644),
             zoom: 8,
             mapTypeId: google.maps.MapTypeId.ROADMAP
          };

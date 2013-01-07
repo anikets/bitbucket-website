@@ -59,27 +59,27 @@
    <script src="js/jquery-1.8.3.js"></script>
    <script>
       $(document).ready(function() {
-         var buses = {"buses": [{
-                  "id" : "123A",
-                  "orig": "Pune Railway Station",
-                  "short_orig" : "Pune Stn",
-                  "dest": "Wagholi",
-                  "short_dest" : "Wagholi",
-                  "waypoints": ["Wadia College", "Bund Garden", "Yerawada", "Inorbit Mall", "Wagholi"],
-                  "timings": ['6 AM', '12 PM', '5PM'],
-                  "durn" : '60 min'
-               },
-               {
-                  "id" : "56B",
-                  "orig": "Pune Municipal Corporation",
-                  "short_orig" : "PMC",
-                  "dest": "Balewadi",
-                  "short_dest" : "Balewadi",
-                  "waypoints": ["E-Square", "Symantec", "Balewadi"],
-                  "timings": ['6 AM', '12 PM', '5 PM'],
-                  "durn" : '50 min'
-               }]
-            };
+         // var buses = {"buses": [{
+         //          "id" : "123A",
+         //          "orig": "Pune Railway Station",
+         //          "short_orig" : "Pune Stn",
+         //          "dest": "Wagholi",
+         //          "short_dest" : "Wagholi",
+         //          "waypoints": ["Wadia College", "Bund Garden", "Yerawada", "Inorbit Mall", "Wagholi"],
+         //          "timings": ['6 AM', '12 PM', '5PM'],
+         //          "durn" : '60 min'
+         //       },
+         //       {
+         //          "id" : "56B",
+         //          "orig": "Pune Municipal Corporation",
+         //          "short_orig" : "PMC",
+         //          "dest": "Balewadi",
+         //          "short_dest" : "Balewadi",
+         //          "waypoints": ["E-Square", "Symantec", "Balewadi"],
+         //          "timings": ['6 AM', '12 PM', '5 PM'],
+         //          "durn" : '50 min'
+         //       }]
+         //    };
 
          var htmlFrag = "";
          buses.buses.forEach(function(value,v) {
@@ -93,7 +93,7 @@
          // Handle clicks on bus names list.
          $('ul.bus-list li a').click(function() {
             var busID = $(this).attr('data-busid');
-            console.log(busID);
+            // console.log(busID);
 
             // Isolate required bus details
             var requiredBus;
@@ -104,7 +104,7 @@
                }
             });
             requiredBus.waypoints.forEach(function(value, index) {
-               waypointsHTML += "<li>" + value + "</li>"
+               waypointsHTML += "<li>" + value.n + "</li>"
             });
             // console.log(waypointsHTML);
             $('ul.waypoints').html(waypointsHTML);
@@ -116,7 +116,7 @@
    <script src="js/jquery.mobile-1.2.0.min.js"></script>
    <!-- <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script> -->
    <!-- <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script> -->
-   <!-- <script src="js/scripts.js"></script> -->
+   <script src="js/scripts.js"></script>
    
 
 </body>
