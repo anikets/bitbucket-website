@@ -1,3 +1,9 @@
+
+var busStops = { 'bStops': [
+   { 'name': 'Yerawada', 'availableBuses': ['123A', '56B'] },
+   { 'name': 'Viman Nagar', 'availableBuses': ['123A'] }
+]};
+
 var buses = {"buses": [{
    "id" : "123A",
    "orig": "Pune Railway Station",
@@ -25,6 +31,27 @@ var buses = {"buses": [{
    "durn" : '50 min'
 }]
 };
+
+
+// Railways
+var railways = { 'trains' : [
+   { 'id': '123ABC', 'timings' : ['0600', '1200', '1800'], 'waypoints': ['Pune Railway Station', 'Shivajinagar', 'Akurdi', 'Lonavala']}
+]};
+
+
+// Railway stations
+var rlyS = { 'stations' : [
+   { 'stn-name' : 'Pune Railway Station' }
+]};
+
+
+
+// Six seater routes
+var sixSR = { routes : [
+   { 'orig' : 'Yerawada, Pune', 'dest' : 'Vagholi, Pune'},
+   { 'orig' : 'Wakad, Pune', 'dest' : 'Katraj, Pune'}
+]};
+
 
 
 // Google Analytics code begin ======================================================
