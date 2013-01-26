@@ -23,11 +23,11 @@
    </div><!-- /header -->
 
    <div data-role="content">
-      <p>Welcome to City Commute! This app is made to supercharge your public transport usage and experience.</p>
-      <p>We believe the world is soon going to run short of space for driving cars and bikes. We also believe it driving requires attention and gets tiring after a certain point. So, we resort to public transport.</p>
+      <p>Welcome to City Commute! This app helps you find public transport information about Pune.</p>
 
       Your location:
       <div id='map'></div>
+      <a href="map.html" data-role="button" data-ajax='false' data-transition="flip"onclick="_gaq.push(['_trackEvent', 'update locn link', 'clicked'])">Update location</a>
 
       <a href="map.html" data-role="button" data-icon="star" data-theme="b" data-ajax='false' data-transition="flip"onclick="_gaq.push(['_trackEvent', 'map link', 'clicked'])">See map</a>
 
@@ -128,8 +128,9 @@
    
    <script>
    jQuery(function() {
-      navigator.geolocation.getCurrentPosition(showCurrentLocation);
+      // navigator.geolocation.getCurrentPosition(showCurrentLocation);
       function showCurrentLocation(location) {
+         console.log(location);
          var latitude = location.coords.latitude;
          var longitude = location.coords.longitude;
          var accuracy = location.coords.accuracy;
