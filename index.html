@@ -10,8 +10,8 @@
    <link rel='stylesheet' type='text/css' href='css/styles.css' />
    <style type="text/css"></style>
 
-   <script type="text/javascript"
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXK9_lmxAOwcJveHQnvJmZAuNKWJkqi8U&sensor=true">
+      <script type="text/javascript"
+   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXK9_lmxAOwcJveHQnvJmZAuNKWJkqi8U&sensor=true&libraries=places">
    </script>
 </head>
 
@@ -30,14 +30,12 @@
       <a href="map.html" data-role="button" data-ajax='false' data-transition="flip"onclick="_gaq.push(['_trackEvent', 'update locn link', 'clicked'])">Update location</a>
 
       <h3>Select your destination</h3>
-
-      <a href="map.html" data-role="button" data-icon="star" data-theme="b" data-ajax='false' data-transition="flip"onclick="_gaq.push(['_trackEvent', 'map link', 'clicked'])">See map</a>
+      <input type="text" name="name" id="basic" data-mini="true" /> <strong>or</strong> <a href="#choose-location" data-role="button" data-rel='dialog' data-transition="pop" data-theme='e'>Choose from map</a>
 
       <ul data-role="listview" data-inset="true">
-         <li><a href="bus_stops.html" data-ajax="false" data-transition="flip">Bus stops</a></li>
-         <li><a href="#six-s" data-transition="turn">6 Seaters</a></li>
-         <li><a href="#rly-s" data-transition="flow">Railway Stations</a></li>
-         <li><a href="#pois" data-transition="slidefade">POIs</a></li>
+         <li><a href="#bus-s" data-transition="slide">Nearby Bus Stops</a></li>
+         <li><a href="#rly-s" data-transition="slide">Nearby Railway Stations</a></li>
+         <li><a href="#six-s" data-transition="slide">6 Seaters Routes</a></li>
       </ul>
 
       <a href="#about-app" data-role="button" data-rel="dialog" data-transition="flip">About this app</a>
@@ -49,11 +47,58 @@
 </div><!-- /page -->
 
 
+<!-- Start of page: buses -->
+<div data-role="page" id="bus-s">
+
+   <div data-role="header">
+      <h1>City Commute | Pune</h1>
+      <a href='#' data-rel="back">Back</a>
+   </div><!-- /header -->
+
+   <div data-role="content" data-theme="d" class='cont'>
+      <h2>Nearby Bus Stops</h2>
+      <div id='map'></div>
+      <ul data-role="listview" data-inset="true" data-filter="true" class='bus-list'>
+      </ul>
+      <div data-role='popup' id='popup-menu'>
+         <ul data-role='listview' data-inset='true'>
+            <li class='visit-b'>Visit this bus stop</li>
+            <li class='dirn'>Directions to here</li>
+         </ul>
+      </div>
+   </div><!-- /content -->
+
+   <div data-role="footer">
+      <h4>Travel in green. Travel in groups.</h4>
+   </div><!-- /footer -->
+</div><!-- /page buses -->
+
+
+<!-- Start of third page: #rly-s -->
+<div data-role="page" id="rly-s">
+
+   <div data-role="header" data-theme="e">
+      <h1>City Commute | Pune</h1>
+      <a href='#' data-rel="back">Back</a>
+   </div><!-- /header -->
+
+   <div data-role="content" data-theme="d"> 
+      <h2>Nearby Railway Stations</h2>
+      <div id='rly-map'></div>
+   </div><!-- /content -->
+   
+   <div data-role="footer">
+      <h4>Coded in Pune.</h4>
+   </div><!-- /footer -->
+</div><!-- /page rly-s -->
+
+
 <!-- Start of third page: #six-s -->
 <div data-role="page" id="six-s">
 
    <div data-role="header" data-theme="e">
       <h1>City Commute | Pune</h1>
+      <a href='#' data-rel="back">Back</a>
    </div><!-- /header -->
 
    <div data-role="content" data-theme="d"> 
@@ -66,45 +111,12 @@
 </div><!-- /page six-s -->
 
 
-<!-- Start of third page: #route-c -->
-<div data-role="page" id="route-c">
-
-   <div data-role="header" data-theme="e">
-      <h1>City Commute | Pune</h1>
-   </div><!-- /header -->
-
-   <div data-role="content" data-theme="d">
-      <h2>Railway Station</h2>
-   </div><!-- /content -->
-   
-   <div data-role="footer">
-      <h4>Built with great care.</h4>
-   </div><!-- /footer -->
-</div><!-- /page route-c -->
-
-
-<!-- Start of third page: #pois -->
-<div data-role="page" id="pois">
-
-   <div data-role="header" data-theme="e">
-      <h1>City Commute | Pune</h1>
-   </div><!-- /header -->
-
-   <div data-role="content" data-theme="d">
-      <h2>Places of Interest</h2>
-   </div><!-- /content -->
-   
-   <div data-role="footer">
-      <h4>Built with great care.</h4>
-   </div><!-- /footer -->
-</div><!-- /page pois -->
-
-
 <!-- Start of third page: #popup -->
 <div data-role="page" id="about-app">
 
    <div data-role="header" data-theme="e">
       <h1>City Commute | Pune</h1>
+      <a href='#' data-rel="back">Back</a>
    </div><!-- /header -->
 
    <div data-role="content" data-theme="d">  
@@ -117,6 +129,23 @@
    
    <div data-role="footer">
       <h4>Built with great care.</h4>
+   </div><!-- /footer -->
+</div><!-- /page popup -->
+
+
+<!-- Start of third page: #popup -->
+<div data-role="page" id="choose-locations">
+
+   <div data-role="header" data-theme="e">
+      <h1>City Commute | Pune</h1>
+   </div><!-- /header -->
+
+   <div data-role="content" data-theme="d">
+      <h2>Choose your location</h2>
+   </div><!-- /content -->
+   
+   <div data-role="footer">
+      <h4>Footer.</h4>
    </div><!-- /footer -->
 </div><!-- /page popup -->
 
@@ -153,6 +182,57 @@
 
    });
    </script>
+
+
+
+
+<script>
+<!-- Script for buses page. -->
+   jQuery(function($) {
+      $('#bus-s').click(function() {
+         navigator.geolocation.getCurrentPosition(initialize);
+      })
+   });
+   function initialize(location) {
+     var gLatLng = new google.maps.LatLng(location.coords.latitude, location.coords.longitude);
+
+     map = new google.maps.Map(document.getElementById('map'), {
+       mapTypeId: google.maps.MapTypeId.ROADMAP,
+       center: gLatLng,
+       zoom: 15
+    });
+
+     var request = {
+       location: gLatLng,
+          // radius: 1000,
+          types: ['bus_station'],
+          rankBy: google.maps.places.RankBy.DISTANCE
+       };
+       infowindow = new google.maps.InfoWindow();
+       var service = new google.maps.places.PlacesService(map);
+       service.nearbySearch(request, callback);
+    }
+
+    function callback(results, status) {
+      if (status == google.maps.places.PlacesServiceStatus.OK) {
+         var htmlFrag = "";
+         for (var i = 0; i < results.length; i++) {
+            // console.log(results[i]);
+            htmlFrag += "<li><a href='#popup-menu' data-transition='slide' data-lat='" +
+            results[i].geometry.location.Ya + "' data-lng='" +
+            results[i].geometry.location.Za + "'>" + results[i].name + "</a></li>\n";
+         }
+         $('ul.bus-list').append(htmlFrag);
+         $('ul.bus-list').listview('refresh');
+      }
+   }
+
+      // google.maps.event.addDomListener(window, 'load', initialize);
+      </script>
+
+
+
+
 
 </body>
 </html>
