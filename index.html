@@ -132,7 +132,6 @@
    jQuery(function($) {
       navigator.geolocation.getCurrentPosition(showCurrentLocation);
       function showCurrentLocation(location) {
-         console.log(location);
          var latitude = location.coords.latitude;
          var longitude = location.coords.longitude;
          var accuracy = location.coords.accuracy;
