@@ -87,7 +87,7 @@
    <div data-role="content" data-theme="d"> 
       <h2>Nearby Railway Stations</h2>
       <div id='map-rly'></div>
-      <ul data-role="listview" data-inset="true" data-filter="true" class='bus-list'></ul>
+      <ul data-role="listview" data-inset="true" data-filter="true" class='rly-list'></ul>
    </div><!-- /content -->
    
    <div data-role="footer">
@@ -271,8 +271,8 @@
             results[i].geometry.location.Ya + "' data-lng='" +
             results[i].geometry.location.Za + "'>" + results[i].name + "</a></li>\n";
          }
-         $('ul.bus-list').append(htmlFrag);
-         $('ul.bus-list').listview('refresh');
+         $('ul.rly-list').append(htmlFrag);
+         $('ul.rly-list').listview('refresh');
       }
    }
    // google.maps.event.addDomListener(window, 'load', initialize);
