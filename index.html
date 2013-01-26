@@ -127,8 +127,8 @@
    <script src="js/scripts.js"></script>
    
    <script>
-   jQuery(function() {
-      // navigator.geolocation.getCurrentPosition(showCurrentLocation);
+   jQuery(function($) {
+      navigator.geolocation.getCurrentPosition(showCurrentLocation);
       function showCurrentLocation(location) {
          console.log(location);
          var latitude = location.coords.latitude;
