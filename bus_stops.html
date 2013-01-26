@@ -74,10 +74,11 @@
          var htmlFrag = "";
          for (var i = 0; i < results.length; i++) {
             // console.log(results[i]);
-            htmlFrag += "<li><a href='#pop" + i + "' data-transition='slide' data-lat='" +
+            htmlFrag += "<li><a href='#popup-menu' data-transition='slide' data-lat='" +
             results[i].geometry.location.Ya + "' data-lng='" +
-            results[i].geometry.location.Za + "'>" + results[i].name + "</a><div data-role='popup' id='pop" + i + "'><ul data-role='listview' data-inset='true'><li class='visit-b'>Visit this bus stop</li><li class='dirn'>Directions to here</li></ul></div></li>\n";
+            results[i].geometry.location.Za + "'>" + results[i].name + "</a></li>\n";
          }
+         htmlFrag += "<div data-role='popup' id='popup-menu'><ul data-role='listview' data-inset='true'><li class='visit-b'>Visit this bus stop</li><li class='dirn'>Directions to here</li></ul></div>"
          $('ul.bus-list').append(htmlFrag);
          $('ul.bus-list').listview('refresh');
       }
