@@ -1,4 +1,139 @@
 
+   jQuery(function($) {
+      navigator.geolocation.getCurrentPosition(showCurrentLocation);
+      function showCurrentLocation(location) {
+         var latitude = location.coords.latitude;
+         var longitude = location.coords.longitude;
+         var accuracy = location.coords.accuracy;
+         var gLatLng = new google.maps.LatLng(latitude, longitude);
+
+         var mapOptions = {
+            center: gLatLng,
+            zoom: 16,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+         };
+         var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+         var marker = new google.maps.Marker({
+            position: gLatLng,
+            map: map,
+            title: 'Your location.'
+        });
+      }
+
+   });
+
+
+
+
+// Script for buses page. ======================================================
+   jQuery(function($) {
+      $('#bus-s-link').click(function() {
+         navigator.geolocation.getCurrentPosition(initialize);
+      })
+   });
+   function initialize(location) {
+     var gLatLng = new google.maps.LatLng(location.coords.latitude, location.coords.longitude);
+
+     map = new google.maps.Map(document.getElementById('map-bus'), {
+       mapTypeId: google.maps.MapTypeId.ROADMAP,
+       center: gLatLng,
+       zoom: 15
+    });
+
+     var request = {
+       location: gLatLng,
+          // radius: 1000,
+          types: ['bus_station'],
+          rankBy: google.maps.places.RankBy.DISTANCE
+       };
+       infowindow = new google.maps.InfoWindow();
+       var service = new google.maps.places.PlacesService(map);
+       service.nearbySearch(request, callback);
+    }
+
+    function callback(results, status) {
+      if (status == google.maps.places.PlacesServiceStatus.OK) {
+         var htmlFrag = "";
+         for (var i = 0; i < results.length; i++) 
+{            // console.log(results[i]);
+            htmlFrag += "<li><a href='#popup-menu' data-transition='slide' data-lat='" +
+            results[i].geometry.location.Ya + "' data-lng='" +
+            results[i].geometry.location.Za + "'>" + results[i].name + "</a></li>\n";
+         }
+         $('ul.bus-list').append(htmlFrag);
+         $('ul.bus-list').listview('refresh');
+      }
+   }
+
+   // google.maps.event.addDomListener(window, 'load', initialize);
+
+
+
+// Script for railway stations page. ===========================================
+   jQuery(function($) {
+      $('#rly-s-link').click(function() {
+         navigator.geolocation.getCurrentPosition(initialize);
+      })
+   });
+   function initialize(location) {
+     var gLatLng = new google.maps.LatLng(location.coords.latitude, location.coords.longitude);
+
+     map = new google.maps.Map(document.getElementById('map-rly'), {
+       mapTypeId: google.maps.MapTypeId.ROADMAP,
+       center: gLatLng,
+       zoom: 15
+    });
+
+     var request = {
+       location: gLatLng,
+          // radius: 1000,
+          types: ['train_station'],
+          rankBy: google.maps.places.RankBy.DISTANCE
+       };
+       infowindow = new google.maps.InfoWindow();
+       var service = new google.maps.places.PlacesService(map);
+       service.nearbySearch(request, callback);
+    }
+
+    function callback(results, status) {
+      if (status == google.maps.places.PlacesServiceStatus.OK) {
+         var htmlFrag = "";
+         for (var i = 0; i < results.length; i++) {
+            // console.log(results[i]);
+            htmlFrag += "<li><a href='#popup-menu' data-transition='slide' data-lat='" +
+            results[i].geometry.location.Ya + "' data-lng='" +
+            results[i].geometry.location.Za + "'>" + results[i].name + "</a></li>\n";
+         }
+         $('ul.rly-list').append(htmlFrag);
+         $('ul.rly-list').listview('refresh');
+      }
+   }
+   // google.maps.event.addDomListener(window, 'load', initialize);
+
+
+
+jQuery(function($) {
+   $('#destinn').blur(function() {
+      console.log($(this).val());
+      var address = $(this).val();
+    geocoder.geocode( { 'address': address}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        map.setCenter(results[0].geometry.location);
+        var marker = new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location
+        });
+      } else {
+        alert("Geocode was not successful for the following reason: " + status);
+      }
+    });
+   })
+});
+
+
+
+
 var busStops = { 'bStops': [
    { 'name': 'Yerawada', 'availableBuses': ['123A', '56B'] },
    { 'name': 'Viman Nagar', 'availableBuses': ['123A'] }
@@ -16,7 +151,8 @@ var buses = {"buses": [{
       {"n": "Inorbit Mall", "t": "10min"},
       {"n": "Wagholi", "t": "10min"}],
    "timings": ['6 AM', '12 PM', '5PM'],
-   "durn" : '60 min'
+   "durn" : '60 min',
+   "type" : 'AC'
 },
 {
    "id" : "56B",
@@ -28,7 +164,8 @@ var buses = {"buses": [{
       {"n": "Symantec", "t": "10min"},
       {"n": "Balewadi", "t": "10min"}],
    "timings": ['6 AM', '12 PM', '5 PM'],
-   "durn" : '50 min'
+   "durn" : '50 min',
+   "type" : 'Non-AC'
 }]
 };
 
