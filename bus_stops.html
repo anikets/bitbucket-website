@@ -29,6 +29,12 @@
          <div id='map'></div>
          <ul data-role="listview" data-inset="true" data-filter="true" class='bus-list'>
          </ul>
+         <div data-role='popup' id='popup-menu'>
+            <ul data-role='listview' data-inset='true'>
+               <li class='visit-b'>Visit this bus stop</li>
+               <li class='dirn'>Directions to here</li>
+            </ul>
+         </div>
       </div><!-- /content -->
 
       <div data-role="footer">
@@ -78,7 +84,6 @@
             results[i].geometry.location.Ya + "' data-lng='" +
             results[i].geometry.location.Za + "'>" + results[i].name + "</a></li>\n";
          }
-         htmlFrag += "<div data-role='popup' id='popup-menu'><ul data-role='listview' data-inset='true'><li class='visit-b'>Visit this bus stop</li><li class='dirn'>Directions to here</li></ul></div>"
          $('ul.bus-list').append(htmlFrag);
          $('ul.bus-list').listview('refresh');
       }
