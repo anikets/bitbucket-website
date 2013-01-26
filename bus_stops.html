@@ -148,7 +148,7 @@
         for (var i = 0; i < results.length; i++) {
             // createMarker(results[i]);
             console.log(results[i]);
-            htmlFrag += "<li><a href='#pg-bus' data-transition='slide'>" + value.name + "</a></li>\n";
+            htmlFrag += "<li><a href='#pg-bus' data-transition='slide'>" + results[i].name + "</a></li>\n";
          }
          $('ul.bus-list').append(htmlFrag);
          $('ul.bus-list').listview('refresh');
