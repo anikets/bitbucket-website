@@ -25,9 +25,11 @@
    <div data-role="content">
       <p>Welcome to City Commute! This app helps you find public transport information about Pune.</p>
 
-      Your location:
+      <h2>Your location</h2>
       <div id='map'></div>
       <a href="map.html" data-role="button" data-ajax='false' data-transition="flip"onclick="_gaq.push(['_trackEvent', 'update locn link', 'clicked'])">Update location</a>
+
+      <h2>Select your destination</h2>
 
       <a href="map.html" data-role="button" data-icon="star" data-theme="b" data-ajax='false' data-transition="flip"onclick="_gaq.push(['_trackEvent', 'map link', 'clicked'])">See map</a>
 
@@ -134,14 +136,24 @@
          var latitude = location.coords.latitude;
          var longitude = location.coords.longitude;
          var accuracy = location.coords.accuracy;
+         var gLatLng = new google.maps.LatLng(latitude, longitude);
 
          var mapOptions = {
-            center: new google.maps.LatLng(latitude, longitude),
-            zoom: 8,
+            center: gLatLng,
+            zoom: 14,
             mapTypeId: google.maps.MapTypeId.ROADMAP
          };
          var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+         var marker = new google.maps.Marker({
+            position: gLatLng,
+            map: map,
+            title: 'Your location.'
+        });
       }
+
+
+      $.get("https://maps.googleapis.com/maps/api/place/textsearch/xml?query=restaurants+in+Sydney&sensor=true&key=AIzaSyCXK9_lmxAOwcJveHQnvJmZAuNKWJkqi8U", function(x) {console.log(x);}, "xml");
    });
    </script>
 
