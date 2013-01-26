@@ -45,21 +45,21 @@
    <script src="js/scripts.js"></script>
 
 
-      <script>
-      jQuery(function($) {
-         navigator.geolocation.getCurrentPosition(initialize);
-      });
-      function initialize(location) {
-       var gLatLng = new google.maps.LatLng(location.coords.latitude, location.coords.longitude);
+   <script>
+   jQuery(function($) {
+      navigator.geolocation.getCurrentPosition(initialize);
+   });
+   function initialize(location) {
+     var gLatLng = new google.maps.LatLng(location.coords.latitude, location.coords.longitude);
 
-       map = new google.maps.Map(document.getElementById('map'), {
-        mapTypeId: google.maps.MapTypeId.ROADMAP,
-        center: gLatLng,
-        zoom: 15
-     });
+     map = new google.maps.Map(document.getElementById('map'), {
+       mapTypeId: google.maps.MapTypeId.ROADMAP,
+       center: gLatLng,
+       zoom: 15
+    });
 
-       var request = {
-        location: gLatLng,
+     var request = {
+       location: gLatLng,
           // radius: 1000,
           types: ['bus_station'],
           rankBy: google.maps.places.RankBy.DISTANCE
@@ -71,18 +71,17 @@
 
     function callback(results, status) {
       if (status == google.maps.places.PlacesServiceStatus.OK) {
-      var htmlFrag = "";
-        for (var i = 0; i < results.length; i++) {
+         var htmlFrag = "";
+         for (var i = 0; i < results.length; i++) {
             // console.log(results[i]);
             htmlFrag += "<li><a href='#pop" + i + "' data-transition='slide' data-lat='" +
-               results[i].geometry.location.Ya + "' data-lng='" +
-               results[i].geometry.location.Za + "'>" + results[i].name + "</a><div data-role='popup' id='pop" + i + "'><ul data-role='listview' data-inset='true'><li class='visit-b'>Visit this bus stop</li><li class='dirn'>Directions to here</li></ul></div></li>\n";
+            results[i].geometry.location.Ya + "' data-lng='" +
+            results[i].geometry.location.Za + "'>" + results[i].name + "</a><div data-role='popup' id='pop" + i + "'><ul data-role='listview' data-inset='true'><li class='visit-b'>Visit this bus stop</li><li class='dirn'>Directions to here</li></ul></div></li>\n";
          }
          $('ul.bus-list').append(htmlFrag);
          $('ul.bus-list').listview('refresh');
       }
    }
- }
 
       // google.maps.event.addDomListener(window, 'load', initialize);
       </script>
