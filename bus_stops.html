@@ -5,8 +5,8 @@
    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
    <!-- <link rel='stylesheet' type='text/css' href='js/jquery-ui.css' /> -->
-   <link rel='stylesheet' type='text/css' href='css/jquery.mobile-1.2.0.min.css' />
-   <!-- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" /> -->
+   <!-- <link rel='stylesheet' type='text/css' href='css/jquery.mobile-1.2.0.min.css' /> -->
+   <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
    <link rel='stylesheet' type='text/css' href='css/styles.css' />
 
    <script type="text/javascript"
@@ -37,31 +37,6 @@
    </div><!-- /page buses -->
 
 
-   <!-- Start of page: bus details -->
-   <div data-role="page" id="pg-bus-det">
-
-      <div data-role="header">
-         <a href='index.html' data-ajax='false'>Home</a>
-         <h1>City Commute | Pune</h1>
-         <a href='#' data-rel="back">Back</a>
-      </div><!-- /header -->
-
-      <div data-role="content" data-theme="d" class='cont'>
-         <h2></h2>
-
-         <h3>Waypoints</h3>
-         <ul data-role="listview" data-inset="true" data-filter="true" class='waypoints'></ul>
-
-         <h3>Departure times</h3>
-         <ul data-role="listview" data-inset="true" data-filter="true" class='dep-times'></ul>
-      </div><!-- /content -->
-
-      <div data-role="footer">
-         <h4>Travel in green. Travel in groups.</h4>
-      </div><!-- /footer -->
-   </div><!-- /page bus details -->
-
-
    <script src="js/jquery-1.8.3.js"></script>
    <!-- <script src="js/jquery-ui.js"></script> -->
    <script src="js/jquery.mobile-1.2.0.min.js"></script>
@@ -69,55 +44,6 @@
    <!-- <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script> -->
    <script src="js/scripts.js"></script>
 
-   <script>
-   $(document).ready(function() {
-
-      // showBusStops();
-
-   });
-
-   function showBusStops () {
-      htmlFrag = "";
-      busStops.bStops.forEach(function(value,v) {
-         htmlFrag += "<li><a href='#pg-bus' data-transition='slide'>" + value.name + "</a></li>\n";
-      });
-         // console.log(htmlFrag);
-         $('ul.bus-list').append(htmlFrag);
-         $('ul.bus-list').listview('refresh');
-      }
-
-      function showBuses () {
-         var htmlFrag = "";
-         buses.buses.forEach(function(value,v) {
-            htmlFrag += "<li><a href='#pg-bus-det' data-transition='slide' data-busid=" + value.id + ">" + value.short_orig + " - " + value.short_dest + "</a></li>\n"
-            // console.log(htmlFrag);
-         });
-         $('ul.bus-list').append(htmlFrag);
-
-
-
-         // Handle clicks on bus names list.
-         $('ul.bus-list li a').click(function() {
-            var busID = $(this).attr('data-busid');
-            // console.log(busID);
-
-            // Isolate required bus details
-            var requiredBus;
-            var waypointsHTML = "";
-            buses.buses.forEach(function(v, i) {
-               if (v.id == busID) {
-                  requiredBus = v;
-               }
-            });
-            requiredBus.waypoints.forEach(function(value, index) {
-               waypointsHTML += "<li>" + value.n + "</li>"
-            });
-            // console.log(waypointsHTML);
-            $('ul.waypoints').html(waypointsHTML);
-            $('ul.waypoints').listview('refresh');
-         });
-      }
-      </script>
 
       <script>
       jQuery(function($) {
@@ -147,28 +73,15 @@
       if (status == google.maps.places.PlacesServiceStatus.OK) {
       var htmlFrag = "";
         for (var i = 0; i < results.length; i++) {
-            // createMarker(results[i]);
-            console.log(results[i]);
-            htmlFrag += "<li><a href='#' data-transition='slide' data-lat='" +
+            // console.log(results[i]);
+            htmlFrag += "<li><a href='#pop" + i + "' data-transition='slide' data-lat='" +
                results[i].geometry.location.Ya + "' data-lng='" +
-               results[i].geometry.location.Za + "'>" + results[i].name + "</a></li>\n";
+               results[i].geometry.location.Za + "'>" + results[i].name + "</a><div data-role='popup' id='pop" + i + "'><ul data-role='listview' data-inset='true'><li class='visit-b'>Visit this bus stop</li><li class='dirn'>Directions to here</li></ul></div></li>\n";
          }
          $('ul.bus-list').append(htmlFrag);
          $('ul.bus-list').listview('refresh');
       }
    }
-
-   function createMarker(place) {
-    var placeLoc = place.geometry.location;
-    var marker = new google.maps.Marker({
-     map: map,
-     position: place.geometry.location
-  });
-
-    google.maps.event.addListener(marker, 'click', function() {
-     infowindow.setContent(place.name);
-     infowindow.open(map, this);
-  });
  }
 
       // google.maps.event.addDomListener(window, 'load', initialize);
