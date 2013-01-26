@@ -33,7 +33,7 @@
       <input type="text" name="name" id="basic" data-mini="true" /> <strong>or</strong> <a href="#choose-location" data-role="button" data-rel='dialog' data-transition="pop" data-theme='e'>Choose from map</a>
 
       <ul data-role="listview" data-inset="true">
-         <li><a href="#bus-s" data-transition="slide">Nearby Bus Stops</a></li>
+         <li><a href="#bus-s" data-transition="slide" id='bus-s-link'>Nearby Bus Stops</a></li>
          <li><a href="#rly-s" data-transition="slide">Nearby Railway Stations</a></li>
          <li><a href="#six-s" data-transition="slide">6 Seaters Routes</a></li>
       </ul>
@@ -189,7 +189,7 @@
 <script>
 <!-- Script for buses page. -->
    jQuery(function($) {
-      $('#bus-s').click(function() {
+      $('#bus-s-link').click(function() {
          navigator.geolocation.getCurrentPosition(initialize);
       })
    });
