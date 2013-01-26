@@ -11,7 +11,7 @@
    <style type="text/css"></style>
 
       <script type="text/javascript"
-   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXK9_lmxAOwcJveHQnvJmZAuNKWJkqi8U&sensor=true&libraries=places">
+   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXK9_lmxAOwcJveHQnvJmZAuNKWJkqi8U&amp;sensor=true&amp;libraries=places">
    </script>
 </head>
 
@@ -27,7 +27,7 @@
 
       <h3>Your location</h3>
       <div id='map'></div>
-      <a href="map.html" data-role="button" data-ajax='false' data-transition="flip"onclick="_gaq.push(['_trackEvent', 'update locn link', 'clicked'])">Update location</a>
+      <a href="map.html" data-role="button" data-ajax='false' data-transition="flip" onclick="_gaq.push(['_trackEvent', 'update locn link', 'clicked'])">Update location</a>
 
       <h3>Select your destination</h3>
       <input type="text" name="name" id="basic" data-mini="true" /> <strong>or</strong> <a href="#choose-location" data-role="button" data-rel='dialog' data-transition="pop" data-theme='e'>Choose from map</a>
@@ -57,7 +57,7 @@
 
    <div data-role="content" data-theme="d" class='cont'>
       <h2>Nearby Bus Stops</h2>
-      <div id='map'></div>
+      <div id='map-bus'></div>
       <ul data-role="listview" data-inset="true" data-filter="true" class='bus-list'>
       </ul>
       <div data-role='popup' id='popup-menu'>
@@ -196,7 +196,7 @@
    function initialize(location) {
      var gLatLng = new google.maps.LatLng(location.coords.latitude, location.coords.longitude);
 
-     map = new google.maps.Map(document.getElementById('map'), {
+     map = new google.maps.Map(document.getElementById('map-bus'), {
        mapTypeId: google.maps.MapTypeId.ROADMAP,
        center: gLatLng,
        zoom: 15
