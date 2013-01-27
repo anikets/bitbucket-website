@@ -146,7 +146,7 @@ function getDirections(argument) {
    var directionsService = new google.maps.DirectionsService();
    var directionsDisplay = new google.maps.DirectionsRenderer();
    console.log(usersLocation);
-   var chicago = new google.maps.LatLng(usersLocation.coords.latitude, usersLocation.coords.latitude);
+   var chicago = new google.maps.LatLng(usersLocation.coords.latitude, usersLocation.coords.longitude);
    var mapOptions = {
       zoom:12,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
