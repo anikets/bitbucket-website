@@ -58,7 +58,6 @@ function initializeBuses(location) {
  }
 
  function callbackBus(results, status) {
-   console.log('initializeBuses', results, status);
    if (status == google.maps.places.PlacesServiceStatus.OK) {
       var htmlFrag = "";
       for (var i = 0; i < results.length; i++) {
@@ -138,6 +137,39 @@ jQuery(function($) {
    })
 });
 
+
+
+$('#get-dirn').click(function() {
+   getDirections({});
+});
+function getDirections(argument) {
+   var directionsService = new google.maps.DirectionsService();
+   var directionsDisplay = new google.maps.DirectionsRenderer();
+   var chicago = new google.maps.LatLng(usersLocation.coords.latitude, usersLocation.coords.latitude);
+   var mapOptions = {
+      zoom:12,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      center: chicago
+   }
+   map = new google.maps.Map(document.getElementById("map-dirn"), mapOptions);
+   directionsDisplay.setMap(map);
+}
+
+function calcRoute() {
+var start = document.getElementById("start").value;
+var end = document.getElementById("end").value;
+var request = {
+origin:start,
+destination:end,
+travelMode: google.maps.TravelMode.TRANSIT
+};
+directionsService.route(request, function(result, status) {
+if (status == google.maps.DirectionsStatus.OK) {
+console.log('ok');
+directionsDisplay.setDirections(result);
+}
+});
+}
 
 
 
