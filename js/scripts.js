@@ -1,6 +1,8 @@
 
 var geocoder;
 var usersLocation;
+var directionsService;
+var directionsDisplay;
 
 jQuery(function($) {
    navigator.geolocation.getCurrentPosition(showCurrentLocation);
@@ -143,8 +145,8 @@ $('#get-dirn').click(function() {
    getDirections({});
 });
 function getDirections(argument) {
-   var directionsService = new google.maps.DirectionsService();
-   var directionsDisplay = new google.maps.DirectionsRenderer();
+   directionsService = new google.maps.DirectionsService();
+   directionsDisplay = new google.maps.DirectionsRenderer();
    var chicago = new google.maps.LatLng(usersLocation.coords.latitude, usersLocation.coords.longitude);
    var mapOptions = {
       zoom:12,
