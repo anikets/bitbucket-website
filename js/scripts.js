@@ -2,73 +2,75 @@
 var geocoder;
 var usersLocation;
 
-   jQuery(function($) {
-      navigator.geolocation.getCurrentPosition(showCurrentLocation);
-      function showCurrentLocation(location) {
-         usersLocation = location;
-         var latitude = location.coords.latitude;
-         var longitude = location.coords.longitude;
-         var accuracy = location.coords.accuracy;
-         var gLatLng = new google.maps.LatLng(latitude, longitude);
+jQuery(function($) {
+   navigator.geolocation.getCurrentPosition(showCurrentLocation);
+   function showCurrentLocation(location) {
+      usersLocation = location;
+      var latitude = location.coords.latitude;
+      var longitude = location.coords.longitude;
+      var accuracy = location.coords.accuracy;
+      var gLatLng = new google.maps.LatLng(latitude, longitude);
 
-         var mapOptions = {
-            center: gLatLng,
-            zoom: 16,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-         };
-         var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+      var mapOptions = {
+         center: gLatLng,
+         zoom: 16,
+         mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+      var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
-         var marker = new google.maps.Marker({
-            position: gLatLng,
-            map: map,
-            title: 'Your location.'
-        });
-      }
+      var marker = new google.maps.Marker({
+         position: gLatLng,
+         map: map,
+         title: 'Your location.'
+     });
+   }
 
-   });
+});
 
 
 
 
 // Script for buses page. ======================================================
-   jQuery(function($) {
-      $('#bus-s-link').click(function() {
-         navigator.geolocation.getCurrentPosition(initializeBuses);
-      })
-   });
-   function initializeBuses(location) {
-     var gLatLng = new google.maps.LatLng(location.coords.latitude, location.coords.longitude);
+jQuery(function($) {
+   $('#bus-s-link').click(function() {
+      initializeBuses(usersLocation);
+      // navigator.geolocation.getCurrentPosition(initializeBuses);
+   })
+});
+function initializeBuses(location) {
+  var gLatLng = new google.maps.LatLng(location.coords.latitude, location.coords.longitude);
 
-     map = new google.maps.Map(document.getElementById('map-bus'), {
-       mapTypeId: google.maps.MapTypeId.ROADMAP,
-       center: gLatLng,
-       zoom: 15
-    });
+  map = new google.maps.Map(document.getElementById('map-bus'), {
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    center: gLatLng,
+    zoom: 15
+ });
 
-     var request = {
-       location: gLatLng,
-          // radius: 1000,
-          types: ['bus_station'],
-          rankBy: google.maps.places.RankBy.DISTANCE
-       };
-       infowindow = new google.maps.InfoWindow();
-       var service = new google.maps.places.PlacesService(map);
-       service.nearbySearch(request, callback);
-    }
+  var request = {
+    location: gLatLng,
+       // radius: 1000,
+       types: ['bus_station'],
+       rankBy: google.maps.places.RankBy.DISTANCE
+    };
+    infowindow = new google.maps.InfoWindow();
+    var service = new google.maps.places.PlacesService(map);
+    service.nearbySearch(request, callback);
+ }
 
-    function callback(results, status) {
-      if (status == google.maps.places.PlacesServiceStatus.OK) {
-         var htmlFrag = "";
-         for (var i = 0; i < results.length; i++) 
-{            // console.log(results[i]);
-            htmlFrag += "<li><a href='#popup-menu' data-transition='slide' data-lat='" +
-            results[i].geometry.location.Ya + "' data-lng='" +
-            results[i].geometry.location.Za + "'>" + results[i].name + "</a></li>\n";
-         }
-         $('ul.bus-list').append(htmlFrag);
-         $('ul.bus-list').listview('refresh');
+ function callback(results, status) {
+   console.log('initializeBuses', results, status);
+   if (status == google.maps.places.PlacesServiceStatus.OK) {
+      var htmlFrag = "";
+      for (var i = 0; i < results.length; i++) {
+      // console.log(results[i]);
+         htmlFrag += "<li><a href='#popup-menu' data-transition='slide' data-lat='" +
+         results[i].geometry.location.Ya + "' data-lng='" +
+         results[i].geometry.location.Za + "'>" + results[i].name + "</a></li>\n";
       }
+      $('ul.bus-list').append(htmlFrag);
+      $('ul.bus-list').listview('refresh');
    }
+}
 
    // google.maps.event.addDomListener(window, 'load', initialize);
 
