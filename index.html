@@ -33,7 +33,8 @@
       <a href="map.html" data-role="button" data-ajax='false' data-transition="flip" onclick="_gaq.push(['_trackEvent', 'change locn link', 'clicked'])">Change location</a>
 
       <h3>Select your destination</h3>
-      <input type="text" name="name" id="destinn" data-mini="true" /> <strong>or</strong> <a href="#choose-location" data-role="button" data-rel='dialog' data-transition="pop" data-theme='e'>Choose from map</a>
+      <input type="text" name="name" id="destinn" data-mini="true" /> <!-- <strong>or</strong> <a href="#choose-location" data-role="button" data-rel='dialog' data-transition="pop" data-theme='e'>Choose from map</a> -->
+      <a href='#dirn-pg' data-role='button' data-theme='e' id='get-dirn' data-transition='slide'>Get Directions</a>
 
       <ul data-role="listview" data-inset="true">
          <li><a href="#bus-s" data-transition="slide" id='bus-s-link'>Nearby Bus Stops</a></li>
@@ -151,6 +152,24 @@
       <h4>Footer.</h4>
    </div><!-- /footer -->
 </div><!-- /page choose-locations -->
+
+
+<!-- Start of third page: #dirn-pg -->
+<div data-role="page" id="dirn-pg">
+
+   <div data-role="header" data-theme="e">
+      <h1>City Commute | Pune</h1>
+      <a href='#' data-rel="back">Back</a>
+   </div><!-- /header -->
+
+   <div data-role="content" data-theme="d">
+      <h2>Directions</h2>
+   </div><!-- /content -->
+   
+   <div data-role="footer">
+      <h4>Footer.</h4>
+   </div><!-- /footer -->
+</div><!-- /page #dirn-pg -->
 
 
    <!-- <script src="js/jquery-1.8.3.js"></script> -->

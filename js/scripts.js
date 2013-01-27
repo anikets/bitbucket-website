@@ -1,7 +1,11 @@
 
+var geocoder;
+var usersLocation;
+
    jQuery(function($) {
       navigator.geolocation.getCurrentPosition(showCurrentLocation);
       function showCurrentLocation(location) {
+         usersLocation = location;
          var latitude = location.coords.latitude;
          var longitude = location.coords.longitude;
          var accuracy = location.coords.accuracy;
@@ -29,10 +33,10 @@
 // Script for buses page. ======================================================
    jQuery(function($) {
       $('#bus-s-link').click(function() {
-         navigator.geolocation.getCurrentPosition(initialize);
+         navigator.geolocation.getCurrentPosition(initializeBuses);
       })
    });
-   function initialize(location) {
+   function initializeBuses(location) {
      var gLatLng = new google.maps.LatLng(location.coords.latitude, location.coords.longitude);
 
      map = new google.maps.Map(document.getElementById('map-bus'), {
@@ -114,16 +118,17 @@
 
 
 jQuery(function($) {
+        $('#get-dirn').hide();
    $('#destinn').blur(function() {
+      if($(this).val().length == 0)
+         return;
+
       console.log($(this).val());
       var address = $(this).val();
+      geocoder = new google.maps.Geocoder();
     geocoder.geocode( { 'address': address}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
-        map.setCenter(results[0].geometry.location);
-        var marker = new google.maps.Marker({
-            map: map,
-            position: results[0].geometry.location
-        });
+        $('#get-dirn').show();
       } else {
         alert("Geocode was not successful for the following reason: " + status);
       }
