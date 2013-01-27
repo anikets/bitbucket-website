@@ -17,6 +17,7 @@
 </head>
 
 <body class='home-pg'>
+   <div class='loading' style='z-index: 99; display: table-cell; width: 100%; height: 100%; position: absolute; top: 0; left: 0; text-align: center; background: rgba(255, 255, 255, 0.6); padding-top: 15%;'>Loading ...</div>
    <div data-role="page" id="one">
 
    <div data-role="header">
@@ -30,7 +31,7 @@
       <div id='map'></div>
       <!-- Your location is set to:
       <h4></h4> -->
-      <a href="map.html" data-role="button" data-ajax='false' data-transition="flip" onclick="_gaq.push(['_trackEvent', 'change locn link', 'clicked'])">Change location</a>
+      <a href="#choose-locations" data-rel='dialog' data-role="button" data-transition="pop" onclick="_gaq.push(['_trackEvent', 'change locn link', 'clicked'])">Change location</a>
 
       <h3>Select your destination</h3>
       <input type="text" name="name" id="destinn" data-mini="true" /> <!-- <strong>or</strong> <a href="#choose-location" data-role="button" data-rel='dialog' data-transition="pop" data-theme='e'>Choose from map</a> -->
@@ -42,7 +43,7 @@
          <li><a href="#six-s" data-transition="slide">6 Seaters Routes</a></li>
       </ul>
 
-      <a href="#about-app" data-role="button" data-rel="dialog" data-transition="flip">About this app</a>
+      <a href="#about-app" data-role="button" data-rel="dialog" data-transition="pop">About this app</a>
    </div><!-- /content -->
 
    <div data-role="footer">
@@ -166,8 +167,8 @@
       <h2>Directions</h2>
       <div id='map-dirn'></div>
       <div class='stats' data-icon='star'>
-         Fuel saved:<br />
-         CO<sub>2</sub> emmissions saved:
+         <h4>Fuel saved</h4>
+         <h4>CO<sub>2</sub> emmissions saved</h4>
       </div>
    </div><!-- /content -->
    

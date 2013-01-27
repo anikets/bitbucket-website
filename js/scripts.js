@@ -5,6 +5,7 @@ var directionsService;
 var directionsDisplay;
 
 jQuery(function($) {
+   $('.loading').hide();
    navigator.geolocation.getCurrentPosition(showCurrentLocation);
    function showCurrentLocation(location) {
       usersLocation = location;
