@@ -145,6 +145,7 @@ $('#get-dirn').click(function() {
 function getDirections(argument) {
    var directionsService = new google.maps.DirectionsService();
    var directionsDisplay = new google.maps.DirectionsRenderer();
+   console.log(usersLocation);
    var chicago = new google.maps.LatLng(usersLocation.coords.latitude, usersLocation.coords.latitude);
    var mapOptions = {
       zoom:12,
