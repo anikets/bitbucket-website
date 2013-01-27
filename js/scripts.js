@@ -156,7 +156,7 @@ function getDirections(argument) {
 }
 
 function calcRoute() {
-var start = "Synerzip, Kothrud, Pune";
+var start = "Kothrud, Pune";
 var end = "Nigdi, Pune";
 var request = {
 origin:start,
