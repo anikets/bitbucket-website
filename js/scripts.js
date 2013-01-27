@@ -145,7 +145,6 @@ $('#get-dirn').click(function() {
 function getDirections(argument) {
    var directionsService = new google.maps.DirectionsService();
    var directionsDisplay = new google.maps.DirectionsRenderer();
-   console.log(usersLocation);
    var chicago = new google.maps.LatLng(usersLocation.coords.latitude, usersLocation.coords.longitude);
    var mapOptions = {
       zoom:12,
@@ -157,8 +156,8 @@ function getDirections(argument) {
 }
 
 function calcRoute() {
-var start = document.getElementById("start").value;
-var end = document.getElementById("end").value;
+var start = "Synerzip, Kothrud, Pune";
+var end = "Nigdi, Pune";
 var request = {
 origin:start,
 destination:end,
