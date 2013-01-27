@@ -54,10 +54,10 @@ function initializeBuses(location) {
     };
     infowindow = new google.maps.InfoWindow();
     var service = new google.maps.places.PlacesService(map);
-    service.nearbySearch(request, callback);
+    service.nearbySearch(request, callbackBus);
  }
 
- function callback(results, status) {
+ function callbackBus(results, status) {
    console.log('initializeBuses', results, status);
    if (status == google.maps.places.PlacesServiceStatus.OK) {
       var htmlFrag = "";
@@ -68,7 +68,7 @@ function initializeBuses(location) {
          results[i].geometry.location.Za + "'>" + results[i].name + "</a></li>\n";
       }
       $('ul.bus-list').append(htmlFrag);
-      // $('ul.bus-list').listview('refresh');
+      $('ul.bus-list').listview('refresh');
    }
 }
 
