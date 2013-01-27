@@ -68,7 +68,7 @@ function initializeBuses(location) {
          results[i].geometry.location.Za + "'>" + results[i].name + "</a></li>\n";
       }
       $('ul.bus-list').append(htmlFrag);
-      $('ul.bus-list').listview('refresh');
+      // $('ul.bus-list').listview('refresh');
    }
 }
 
