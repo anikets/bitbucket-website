@@ -62,7 +62,9 @@
 
       var board = d.byTag('td');
       var emptySpaces = [];
-      state = {
+      var msgSuccess = "You win! You are awesome.";
+      var msgFail = "Computer wins. Better luck next time.";
+      var state = {
         0: 0,
         1: 0,
         2: 0,
@@ -73,6 +75,7 @@
         7: 0,
         8: 0
       };
+
       (function init() {
         for ( counter = 0; counter < board.length; counter++ ) {
           board[counter].addEventListener('click', function() {
@@ -103,28 +106,28 @@
       }
 
       function checkVictory() {
-        if ( state[0] == 1 && state[1] == 1 && state[2] == 1 ) { d.byTag( 'div' )[0].innerHTML = "You win! You're awesome" }
-        if ( state[3] == 1 && state[4] == 1 && state[5] == 1 ) { d.byTag( 'div' )[0].innerHTML = "You win! You're awesome" }
-        if ( state[6] == 1 && state[7] == 1 && state[8] == 1 ) { d.byTag( 'div' )[0].innerHTML = "You win! You're awesome" }
+        if ( state[0] == 1 && state[1] == 1 && state[2] == 1 ) { d.byTag( 'div' )[0].innerHTML = msgSuccess }
+        if ( state[3] == 1 && state[4] == 1 && state[5] == 1 ) { d.byTag( 'div' )[0].innerHTML = msgSuccess }
+        if ( state[6] == 1 && state[7] == 1 && state[8] == 1 ) { d.byTag( 'div' )[0].innerHTML = msgSuccess }
 
-        if ( state[0] == 1 && state[3] == 1 && state[6] == 1 ) { d.byTag( 'div' )[0].innerHTML = "You win! You're awesome" }
-        if ( state[1] == 1 && state[4] == 1 && state[7] == 1 ) { d.byTag( 'div' )[0].innerHTML = "You win! You're awesome" }
-        if ( state[2] == 1 && state[5] == 1 && state[8] == 1 ) { d.byTag( 'div' )[0].innerHTML = "You win! You're awesome" }
+        if ( state[0] == 1 && state[3] == 1 && state[6] == 1 ) { d.byTag( 'div' )[0].innerHTML = msgSuccess }
+        if ( state[1] == 1 && state[4] == 1 && state[7] == 1 ) { d.byTag( 'div' )[0].innerHTML = msgSuccess }
+        if ( state[2] == 1 && state[5] == 1 && state[8] == 1 ) { d.byTag( 'div' )[0].innerHTML = msgSuccess }
 
-        if ( state[0] == 1 && state[4] == 1 && state[8] == 1 ) { d.byTag( 'div' )[0].innerHTML = "You win! You're awesome" }
-        if ( state[6] == 1 && state[4] == 1 && state[2] == 1 ) { d.byTag( 'div' )[0].innerHTML = "You win! You're awesome" }
+        if ( state[0] == 1 && state[4] == 1 && state[8] == 1 ) { d.byTag( 'div' )[0].innerHTML = msgSuccess }
+        if ( state[6] == 1 && state[4] == 1 && state[2] == 1 ) { d.byTag( 'div' )[0].innerHTML = msgSuccess }
 
 
-        if ( state[0] == 2 && state[1] == 2 && state[2] == 2 ) { d.byTag( 'div' )[0].innerHTML = "Computer wins. Better luck next time." }
-        if ( state[3] == 2 && state[4] == 2 && state[5] == 2 ) { d.byTag( 'div' )[0].innerHTML = "Computer wins. Better luck next time." }
-        if ( state[6] == 2 && state[7] == 2 && state[8] == 2 ) { d.byTag( 'div' )[0].innerHTML = "Computer wins. Better luck next time." }
+        if ( state[0] == 2 && state[1] == 2 && state[2] == 2 ) { d.byTag( 'div' )[0].innerHTML = msgFail }
+        if ( state[3] == 2 && state[4] == 2 && state[5] == 2 ) { d.byTag( 'div' )[0].innerHTML = msgFail }
+        if ( state[6] == 2 && state[7] == 2 && state[8] == 2 ) { d.byTag( 'div' )[0].innerHTML = msgFail }
 
-        if ( state[0] == 2 && state[3] == 2 && state[6] == 2 ) { d.byTag( 'div' )[0].innerHTML = "Computer wins. Better luck next time." }
-        if ( state[1] == 2 && state[4] == 2 && state[7] == 2 ) { d.byTag( 'div' )[0].innerHTML = "Computer wins. Better luck next time." }
-        if ( state[2] == 2 && state[5] == 2 && state[8] == 2 ) { d.byTag( 'div' )[0].innerHTML = "Computer wins. Better luck next time." }
+        if ( state[0] == 2 && state[3] == 2 && state[6] == 2 ) { d.byTag( 'div' )[0].innerHTML = msgFail }
+        if ( state[1] == 2 && state[4] == 2 && state[7] == 2 ) { d.byTag( 'div' )[0].innerHTML = msgFail }
+        if ( state[2] == 2 && state[5] == 2 && state[8] == 2 ) { d.byTag( 'div' )[0].innerHTML = msgFail }
 
-        if ( state[0] == 2 && state[4] == 2 && state[8] == 2 ) { d.byTag( 'div' )[0].innerHTML = "Computer wins. Better luck next time." }
-        if ( state[6] == 2 && state[4] == 2 && state[2] == 2 ) { d.byTag( 'div' )[0].innerHTML = "Computer wins. Better luck next time." }
+        if ( state[0] == 2 && state[4] == 2 && state[8] == 2 ) { d.byTag( 'div' )[0].innerHTML = msgFail }
+        if ( state[6] == 2 && state[4] == 2 && state[2] == 2 ) { d.byTag( 'div' )[0].innerHTML = msgFail }
       }
     </script>
   </body>
