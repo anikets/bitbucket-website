@@ -63,7 +63,11 @@
 
       /* To-dos:
         * User shouldn't be able to click on computer's square.
-        * Build intelligence in computer's moves. */
+        * Build intelligence in computer's moves.
+          * On each move, try to fill in adjacent square, if it's empty to the end.
+            Try to prevent the opponent doing this.
+        * Add meta data.
+        * Add GA. */
 
       /* Shorten variable names. */
       var d = document;
@@ -108,12 +112,16 @@
         var int = setInterval( function() {
           var found = parseInt(Math.random() * 8 - 1);
           if ( state[found] == 0 ) {
-            board[found].innerHTML = 'O';
-            state[found]
             clearInterval( int );
+            board[found].innerHTML = 'O';
+            state[found] = 2;
+            checkVictory();
           }
         }, 10);
-        checkVictory();
+      }
+
+      function thinkNextMove() {
+
       }
 
       function checkVictory() {
