@@ -3,6 +3,9 @@
   <head>
     <title>Tic Tac Toe</title>
     <meta charset="UTF-8">
+
+    <!-- My version of the Tic Tac Toe -->
+
     <style type="text/css">
       body {
         font-family: Tahoma;
@@ -45,6 +48,8 @@
     </table>
 
     <div></div>
+
+    <p></p>
 
     <script type="text/javascript">
       /*
@@ -112,28 +117,34 @@
       }
 
       function checkVictory() {
-        if ( state[0] == 1 && state[1] == 1 && state[2] == 1 ) { d.byTag( 'div' )[0].innerHTML = msgSuccess }
-        if ( state[3] == 1 && state[4] == 1 && state[5] == 1 ) { d.byTag( 'div' )[0].innerHTML = msgSuccess }
-        if ( state[6] == 1 && state[7] == 1 && state[8] == 1 ) { d.byTag( 'div' )[0].innerHTML = msgSuccess }
+        if ( state[0] == 1 && state[1] == 1 && state[2] == 1 ) { d.byTag( 'div' )[0].innerHTML = msgSuccess; showGameOverMsg(); }
+        if ( state[3] == 1 && state[4] == 1 && state[5] == 1 ) { d.byTag( 'div' )[0].innerHTML = msgSuccess; showGameOverMsg(); }
+        if ( state[6] == 1 && state[7] == 1 && state[8] == 1 ) { d.byTag( 'div' )[0].innerHTML = msgSuccess; showGameOverMsg(); }
 
-        if ( state[0] == 1 && state[3] == 1 && state[6] == 1 ) { d.byTag( 'div' )[0].innerHTML = msgSuccess }
-        if ( state[1] == 1 && state[4] == 1 && state[7] == 1 ) { d.byTag( 'div' )[0].innerHTML = msgSuccess }
-        if ( state[2] == 1 && state[5] == 1 && state[8] == 1 ) { d.byTag( 'div' )[0].innerHTML = msgSuccess }
+        if ( state[0] == 1 && state[3] == 1 && state[6] == 1 ) { d.byTag( 'div' )[0].innerHTML = msgSuccess; showGameOverMsg(); }
+        if ( state[1] == 1 && state[4] == 1 && state[7] == 1 ) { d.byTag( 'div' )[0].innerHTML = msgSuccess; showGameOverMsg(); }
+        if ( state[2] == 1 && state[5] == 1 && state[8] == 1 ) { d.byTag( 'div' )[0].innerHTML = msgSuccess; showGameOverMsg(); }
 
-        if ( state[0] == 1 && state[4] == 1 && state[8] == 1 ) { d.byTag( 'div' )[0].innerHTML = msgSuccess }
-        if ( state[6] == 1 && state[4] == 1 && state[2] == 1 ) { d.byTag( 'div' )[0].innerHTML = msgSuccess }
+        if ( state[0] == 1 && state[4] == 1 && state[8] == 1 ) { d.byTag( 'div' )[0].innerHTML = msgSuccess; showGameOverMsg(); }
+        if ( state[6] == 1 && state[4] == 1 && state[2] == 1 ) { d.byTag( 'div' )[0].innerHTML = msgSuccess; showGameOverMsg(); }
 
 
-        if ( state[0] == 2 && state[1] == 2 && state[2] == 2 ) { d.byTag( 'div' )[0].innerHTML = msgFail }
-        if ( state[3] == 2 && state[4] == 2 && state[5] == 2 ) { d.byTag( 'div' )[0].innerHTML = msgFail }
-        if ( state[6] == 2 && state[7] == 2 && state[8] == 2 ) { d.byTag( 'div' )[0].innerHTML = msgFail }
+        if ( state[0] == 2 && state[1] == 2 && state[2] == 2 ) { d.byTag( 'div' )[0].innerHTML = msgFail; showGameOverMsg(); }
+        if ( state[3] == 2 && state[4] == 2 && state[5] == 2 ) { d.byTag( 'div' )[0].innerHTML = msgFail; showGameOverMsg(); }
+        if ( state[6] == 2 && state[7] == 2 && state[8] == 2 ) { d.byTag( 'div' )[0].innerHTML = msgFail; showGameOverMsg(); }
 
-        if ( state[0] == 2 && state[3] == 2 && state[6] == 2 ) { d.byTag( 'div' )[0].innerHTML = msgFail }
-        if ( state[1] == 2 && state[4] == 2 && state[7] == 2 ) { d.byTag( 'div' )[0].innerHTML = msgFail }
-        if ( state[2] == 2 && state[5] == 2 && state[8] == 2 ) { d.byTag( 'div' )[0].innerHTML = msgFail }
+        if ( state[0] == 2 && state[3] == 2 && state[6] == 2 ) { d.byTag( 'div' )[0].innerHTML = msgFail; showGameOverMsg(); }
+        if ( state[1] == 2 && state[4] == 2 && state[7] == 2 ) { d.byTag( 'div' )[0].innerHTML = msgFail; showGameOverMsg(); }
+        if ( state[2] == 2 && state[5] == 2 && state[8] == 2 ) { d.byTag( 'div' )[0].innerHTML = msgFail; showGameOverMsg(); }
 
-        if ( state[0] == 2 && state[4] == 2 && state[8] == 2 ) { d.byTag( 'div' )[0].innerHTML = msgFail }
-        if ( state[6] == 2 && state[4] == 2 && state[2] == 2 ) { d.byTag( 'div' )[0].innerHTML = msgFail }
+        if ( state[0] == 2 && state[4] == 2 && state[8] == 2 ) { d.byTag( 'div' )[0].innerHTML = msgFail; showGameOverMsg(); }
+        if ( state[6] == 2 && state[4] == 2 && state[2] == 2 ) { d.byTag( 'div' )[0].innerHTML = msgFail; showGameOverMsg(); }
+      }
+
+      function showGameOverMsg() {
+        d.byTag( 'p' )[0].innerHTML = 'Refresh page to start a new game';
+        d.byTag( 'table' )[0].style.opacity = 0.2;
+        // Remove event listeners.
       }
     </script>
   </body>
