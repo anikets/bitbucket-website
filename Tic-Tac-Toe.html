@@ -93,7 +93,7 @@
         for ( counter = 0; counter < board.length; counter++ ) {
           board[counter].addEventListener('click', function() {
             //console.log( 'click' );
-            if ( this.innerHTML != 'O' ) {
+            if ( this.innerHTML != 'O' && this.innerHTML != 'X' ) {
               this.innerHTML = 'X';
               state[parseInt(this.getAttribute( 'data-index' ))] = 1;
               computersTurn();
