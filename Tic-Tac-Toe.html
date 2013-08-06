@@ -91,16 +91,19 @@
 
       (function init() {
         for ( counter = 0; counter < board.length; counter++ ) {
-          board[counter].addEventListener('click', function() {
-            //console.log( 'click' );
-            if ( this.innerHTML != 'O' && this.innerHTML != 'X' ) {
-              this.innerHTML = 'X';
-              state[parseInt(this.getAttribute( 'data-index' ))] = 1;
-              computersTurn();
-            }
-          }, false);
+          board[counter].addEventListener('click', processClick, false);
         }
       })();
+
+      function processClick() {
+        //console.log( 'click' );
+        if ( this.innerHTML != 'O' && this.innerHTML != 'X' ) {
+          this.innerHTML = 'X';
+          state[parseInt(this.getAttribute( 'data-index' ))] = 1;
+          computersTurn();
+        }
+
+      }
 
       function computersTurn() {
         checkVictory();
@@ -154,6 +157,9 @@
         d.byTag( 'p' )[0].innerHTML = 'Refresh page to start a new game';
         d.byTag( 'table' )[0].style.opacity = 0.2;
         // Remove event listeners.
+        for ( counter = 0; counter < board.length; counter++ ) {
+          board[counter].removeEventListener( 'click', processClick, false );
+        }
       }
     </script>
   </body>
