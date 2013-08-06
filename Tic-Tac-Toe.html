@@ -105,11 +105,11 @@
         8: 0
       };
 
-      (function init() {
+      window.onload = function init() {
         for ( counter = 0; counter < board.length; counter++ ) {
           board[counter].addEventListener('click', processClick, false);
         }
-      })();
+      };
 
       function processClick() {
         //console.log( 'click' );
