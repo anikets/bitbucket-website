@@ -45,12 +45,14 @@
       pauseBtn.removeAttribute( 'disabled' );
       resetBtn.removeAttribute( 'disabled' );
     }, false );
+
     pauseBtn.addEventListener( 'click', function() {
       clearInterval( interval );
       startBtn.removeAttribute( 'disabled' );
       this.setAttribute( 'disabled' );
     }, false );
-    resetBtn.addEventListener( 'click', function() {  
+
+    resetBtn.addEventListener( 'click', function() {
       timeElapsed.textContent = "0:0:0:0";
       clearInterval( interval );
       this.setAttribute( 'disabled' );
