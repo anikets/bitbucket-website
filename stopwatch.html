@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+  <title>Stopwatch</title>
+  <meta name="description" content="A simple stopwatch application">
+  <meta name="keywords" content="stopwatch, timer, stop, watch, free, mobile">
+  <meta name="author" content="Aniket A. Suryavanshi">
+  <link rel='author' href='https://plus.google.com/u/0/+AniketSuryavanshi1' />
+  <style type="text/css">
+    body { font: normal normal 15px/20px Ubuntu, Tahoma, sans-serif; text-align: center; }
+    input { font-size: 1.5rem; line-height: 2rem; }
+    #time { font-size: 5rem; line-height: 6rem; }
+  </style>
+</head>
+<body>
+  <h1>Stopwatch</h1>
+  <input type='button' id='start' value='Start' />
+  <input type='button' id='pause' value='Pause' disabled />
+  <input type='button' id='reset' value='Reset' disabled />
+  <div id='time'>
+    00:00:00
+  </div>
+  <script>
+    var d = document;
+    d.byId = d.getElementById;
+    var startBtn = d.byId( 'start' );
+    var pauseBtn = d.byId( 'pause' );
+    var resetBtn = d.byId( 'reset' );
+    var timeElapsed = d.byId( 'time' );
+    var interval;
+    startBtn.addEventListener( 'click', function() {
+      interval = setInterval( function() {
+        timeElapsed.textContent = Date.now();
+      }, 100 );
+      this.setAttribute( 'disabled' );
+      pauseBtn.removeAttribute( 'disabled' );
+      resetBtn.removeAttribute( 'disabled' );
+    }, false );
+    pauseBtn.addEventListener( 'click', function() {
+      clearInterval( interval );
+      startBtn.removeAttribute( 'disabled' );
+      this.setAttribute( 'disabled' );
+    }, false );
+    resetBtn.addEventListener( 'click', function() {  
+      timeElapsed.textContent = "00:00:00";
+      clearInterval( interval );
+      this.setAttribute( 'disabled' );
+      startBtn.removeAttribute( 'disabled' );
+      pauseBtn.setAttribute( 'disabled' );
+    }, false );
+  </script>
+</body>
+</html>
