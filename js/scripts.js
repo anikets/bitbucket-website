@@ -6,7 +6,7 @@ var directionsDisplay;
 
 jQuery(function($) {
    $('.loading').hide();
-   navigator.geolocation.getCurrentPosition(showCurrentLocation);
+   navigator.geolocation.getCurrentPosition(showCurrentLocation, error);
    function showCurrentLocation(location) {
       usersLocation = location;
       var latitude = location.coords.latitude;
@@ -28,6 +28,9 @@ jQuery(function($) {
      });
    }
 
+   function error( err ) {
+      console.log( 'Error:' + err.code + ' | ' + err.message );
+   }
 });
 
 
