@@ -28,9 +28,18 @@
     var resetBtn = d.byId( 'reset' );
     var timeElapsed = d.byId( 'time' );
     var interval;
+    var ms = 0; // milliseconds
+    var s = 0;  // seconds
+    var m = 0;  // minutes
+    var h = 0;  // hours
     startBtn.addEventListener( 'click', function() {
       interval = setInterval( function() {
-        timeElapsed.textContent = Date.now();
+        ms++;
+        if ( ms == 10 ) { s++; ms = 0; }
+        if ( s == 60 ) { m++; s = 0; }
+        if ( m == 60 ) { h++; m = 0; }
+        if ( h == 24 ) { console.log( 'limit exceeded' ); }
+        timeElapsed.textContent = h + ':' + m + ':' + s + ':' + ms;
       }, 100 );
       this.setAttribute( 'disabled' );
       pauseBtn.removeAttribute( 'disabled' );
