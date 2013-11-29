@@ -18,7 +18,7 @@
   <input type='button' id='pause' value='Pause' disabled />
   <input type='button' id='reset' value='Reset' disabled />
   <div id='time'>
-    00:00:00
+    0:0:0:0
   </div>
   <script>
     var d = document;
@@ -51,7 +51,7 @@
       this.setAttribute( 'disabled' );
     }, false );
     resetBtn.addEventListener( 'click', function() {  
-      timeElapsed.textContent = "00:00:00";
+      timeElapsed.textContent = "0:0:0:0";
       clearInterval( interval );
       this.setAttribute( 'disabled' );
       startBtn.removeAttribute( 'disabled' );
