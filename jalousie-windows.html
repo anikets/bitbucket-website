@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang='en'>
+<head>
+  <title>Implementing Jalousie Windows with CSS</title>
+  <meta name="description" content="Jalousie Windows with CSS. Style adaptations can be used with menus and list items.">
+  <meta name="keywords" content="css, jalousie, windows, layout, menu, list, 3D, 3D transforms">
+  <meta name="author" content="Aniket A. Suryavanshi">
+  <style type="text/css">
+  body {
+    background-image: url( 'images/brickwall.png' );
+    -webkit-perspective: 1000px;
+  }
+  h1 { float: left; }
+  .controls { float: right; margin-top: 22px; }
+  .controls input {
+    font-size: 1.2rem;
+    line-height: 2rem;
+  }
+  .window {
+    clear: both;
+    background-image: url( 'images/waterscape.JPG' );
+    background-position: center center;
+    background-size: cover;
+    border: solid 50px brown;
+    border-image: url('images/dark_wood.png') 25% repeat;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.5);
+  }
+  article {
+    -webkit-transform: rotateX( 35deg );
+    font-size: 3rem;
+    line-height: 6rem;
+    border: solid 1px #ccc;
+    text-align: center;
+    background: linear-gradient(rgba(255,255,255,1),rgba(255,255,255,0.5));
+    text-shadow: 1px 1px 0 #fff;
+    -webkit-transition: all 0.2s ease-out;
+    cursor: pointer;
+  }
+  article:hover {
+    background: linear-gradient(rgba(255,255,255,0.5),rgba(255,255,255,0.5));
+    -webkit-transform: rotateX( 0deg );
+    box-shadow: 0 0px 5px rgba(0,0,0,0.2);
+  }
+  .open article { -webkit-transform: rotateX( 90deg ); }
+  .close article { -webkit-transform: rotateX( 0deg ); }
+  </style>
+</head>
+<body>
+  <h1>Jalousie Window</h1>
+  <div class='controls'>
+    <input type='button' value='Open Window' id='open-window' />
+    <input type='button' value='Reset' id='reset-window' />
+    <input type='button' value='Close Window' id='close-window' />
+  </div>
+  <section class='window'>
+    <article>Pane 1</article>
+    <article>Pane 2</article>
+    <article>Pane 3</article>
+    <article>Pane 4</article>
+    <article>Pane 5</article>
+  </section>
+
+  <script>
+  var d = document;
+  d.byId = d.getElementById;
+  d.byClass = d.getElementsByClassName;
+  ( function() {
+    var openWindowBtn = d.byId( 'open-window' );
+    var resetWindowBtn = d.byId( 'reset-window' );
+    var closeWindowBtn = d.byId( 'close-window' );
+    var windowElement = d.byClass( 'window' )[ 0 ];
+    var body = d.getElementsByTagName( 'body' )[ 0 ];
+    openWindowBtn.addEventListener( 'click', function() {
+      windowElement.className = "window open";
+    });
+    resetWindowBtn.addEventListener( 'click', function() {
+      windowElement.className = "window";
+    });
+    closeWindowBtn.addEventListener( 'click', function() {
+      windowElement.className = "window close";
+    });
+
+    document.addEventListener('mousemove', function(event) {
+      //console.log('mousemove',event);
+      body.setAttribute('style', '-webkit-perspective-origin-x:' + event.x + 'px; -webkit-perspective-origin-y:' + event.y + 'px' );
+    })
+  })();
+  </script>
+</body>
+</html>
