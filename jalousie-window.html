@@ -9,6 +9,7 @@
   body {
     background-image: url( 'images/brickwall.png' );
     font-family: 'DIN Alternate', 'Ubuntu', Roboto, 'Segoe UI',Tahoma, sans-serif;
+    perspective: 1000px;
     -webkit-perspective: 1000px;
   }
   h1 { float: left; }
@@ -25,24 +26,39 @@
     border: solid 50px brown;
     border-image: url('images/dark_wood.png') 25% repeat;
     box-shadow: 3px 3px 10px rgba(0,0,0,0.5);
+    backface-visibility: visible;
+    perspective-origin: 150% 150%;
+    transform-style: preserve-3d;
+    -webkit-backface-visibility: visible;
+    -webkit-perspective-origin: 150% 150%;
+    -webkit-transform-style: preserve-3d;
   }
   .pane {
+    transform: rotateX( 35deg );
     -webkit-transform: rotateX( 35deg );
     font-size: 3rem;
     line-height: 6rem;
     border: solid 1px #ccc;
     text-align: center;
     background: linear-gradient(rgba(255,255,255,1),rgba(255,255,255,0.5));
+    transition: all 0.2s ease-out;
     -webkit-transition: all 0.2s ease-out;
     cursor: pointer;
   }
   .pane:hover {
     background: linear-gradient(rgba(255,255,255,0.5),rgba(255,255,255,0.5));
+    transform: rotateX( 0deg );
     -webkit-transform: rotateX( 0deg );
     box-shadow: 0 0px 5px rgba(0,0,0,0.2);
   }
-  .open .pane { -webkit-transform: rotateX( 90deg ); }
-  .close .pane { -webkit-transform: rotateX( 0deg ); }
+  .open .pane {
+    transform: rotateX( 90deg );
+    -webkit-transform: rotateX( 90deg );
+  }
+  .close .pane {
+    transform: rotateX( 0deg );
+    -webkit-transform: rotateX( 0deg );
+  }
   </style>
 </head>
 <body>
@@ -92,10 +108,13 @@
       windowElement.className = "window close";
     });
 
-    document.addEventListener('mousemove', function(event) {
-      //console.log('mousemove',event);
-      body.setAttribute('style', '-webkit-perspective-origin-x:' + event.x + 'px; -webkit-perspective-origin-y:' + event.y + 'px' );
-    })
+    var xc, yc;
+
+    d.body.addEventListener('mousemove', function(event) {
+      'x' in event ? xc = event.x : xc = event.clientX;
+      'y' in event ? yc = event.y : yc = event.clientY;
+      body.setAttribute('style', 'perspective-origin:' + xc + 'px ' + yc + 'px;' + '-webkit-perspective-origin-x:' + xc + 'px; -webkit-perspective-origin-y:' + yc + 'px' );
+    });
   })();
   </script>
 </body>
