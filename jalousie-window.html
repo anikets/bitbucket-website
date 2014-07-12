@@ -8,6 +8,7 @@
   <style type="text/css">
   body {
     background-image: url( 'images/brickwall.png' );
+    font-family: 'DIN Alternate', 'Ubuntu', Roboto, 'Segoe UI',Tahoma, sans-serif;
     -webkit-perspective: 1000px;
   }
   h1 { float: left; }
@@ -25,40 +26,39 @@
     border-image: url('images/dark_wood.png') 25% repeat;
     box-shadow: 3px 3px 10px rgba(0,0,0,0.5);
   }
-  article {
+  .pane {
     -webkit-transform: rotateX( 35deg );
     font-size: 3rem;
     line-height: 6rem;
     border: solid 1px #ccc;
     text-align: center;
     background: linear-gradient(rgba(255,255,255,1),rgba(255,255,255,0.5));
-    text-shadow: 1px 1px 0 #fff;
     -webkit-transition: all 0.2s ease-out;
     cursor: pointer;
   }
-  article:hover {
+  .pane:hover {
     background: linear-gradient(rgba(255,255,255,0.5),rgba(255,255,255,0.5));
     -webkit-transform: rotateX( 0deg );
     box-shadow: 0 0px 5px rgba(0,0,0,0.2);
   }
-  .open article { -webkit-transform: rotateX( 90deg ); }
-  .close article { -webkit-transform: rotateX( 0deg ); }
+  .open .pane { -webkit-transform: rotateX( 90deg ); }
+  .close .pane { -webkit-transform: rotateX( 0deg ); }
   </style>
 </head>
 <body>
-  <h1>Jalousie Window</h1>
+  <h1>Jalousie Window with CSS and JavaScript</h1>
   <div class='controls'>
     <input type='button' value='Open Window' id='open-window' />
     <input type='button' value='Reset' id='reset-window' />
     <input type='button' value='Close Window' id='close-window' />
   </div>
-  <section class='window'>
-    <article>Pane 1</article>
-    <article>Pane 2</article>
-    <article>Pane 3</article>
-    <article>Pane 4</article>
-    <article>Pane 5</article>
-  </section>
+  <div class='window'>
+    <div class='pane'>Pane 1</div class='pane'>
+    <div class='pane'>Pane 2</div class='pane'>
+    <div class='pane'>Pane 3</div class='pane'>
+    <div class='pane'>Pane 4</div class='pane'>
+    <div class='pane'>Pane 5</div class='pane'>
+  </div>
 
   <script type="text/javascript"> // GA
     var _gaq = _gaq || [];
