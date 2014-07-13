@@ -89,15 +89,20 @@
   </script>
 
   <script>
-  var d = document;
-  d.byId = d.getElementById;
-  d.byClass = d.getElementsByClassName;
-  ( function() {
+  var JalousieWindow = function() {
+    // Create shortcuts.
+    var d = document;
+    d.byId = d.getElementById;
+    d.byClass = d.getElementsByClassName;
+
+    // Store required elements for future use.
     var openWindowBtn = d.byId( 'open-window' );
     var resetWindowBtn = d.byId( 'reset-window' );
     var closeWindowBtn = d.byId( 'close-window' );
     var windowElement = d.byClass( 'window' )[ 0 ];
     var body = d.getElementsByTagName( 'body' )[ 0 ];
+
+    // Add event listeners.
     openWindowBtn.addEventListener( 'click', function() {
       windowElement.className = "window open";
     });
@@ -108,14 +113,16 @@
       windowElement.className = "window close";
     });
 
-    var xc, yc;
+    var xc, yc;  // X and Y coordinates of the mouse pointer.
 
+    // Change perspective origin as the mouse pointer moves.
     d.body.addEventListener('mousemove', function(event) {
       'x' in event ? xc = event.x : xc = event.clientX;
       'y' in event ? yc = event.y : yc = event.clientY;
       body.setAttribute('style', 'perspective-origin:' + xc + 'px ' + yc + 'px;' + '-webkit-perspective-origin-x:' + xc + 'px; -webkit-perspective-origin-y:' + yc + 'px' );
     });
-  })();
+  };
+  window.onload = JalousieWindow;
   </script>
 </body>
 </html>
